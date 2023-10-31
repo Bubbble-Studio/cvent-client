@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "./Home.module.css";
 import logo from "../../assets/images/cventlogo.svg";
+import { useSocket } from "../../utils/GlobalContext";
 
-const Home = ({ socket }) => {
+const Home = () => {
+  const socket = useSocket();
   React.useEffect(() => {
+    if (socket == null) return;
     socket.emit("join-room", "desktop");
-  }, []);
+  }, [socket]);
+
   socket.on("user-connected", (data) => {
     console.log(data);
   });

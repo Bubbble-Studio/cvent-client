@@ -1,17 +1,19 @@
 import styles from "./ControllerPage.module.css";
 import ControllerLayout from "../../layouts/ControllerLayout";
-import logo from "../../assets/images/cventlogo.svg";
 import headerImg2 from "../../assets/images/Home.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../../utils/data";
 import { useEffect, useState } from "react";
 import ButtonsGrid from "../../components/ButtonGrid";
+import { useSocket } from "../../utils/GlobalContext";
+import { SOCKET_EVENTS } from "../../utils/constants";
 
 function ControllerPage() {
   const { id } = useParams();
   const [controllerData, setControllerData] = useState({});
 
   const navigate = useNavigate();
+  const socket = useSocket();
 
   useEffect(() => {
     if (id) {
@@ -21,6 +23,9 @@ function ControllerPage() {
 
   function handleClickBtn(next) {
     navigate(`/controller/${next}`);
+    // if (socket) {
+    socket.emit(SOCKET_EVENTS.NAVIGATE_FORWARD, { next });
+    //  }
   }
 
   return (
