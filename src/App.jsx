@@ -1,11 +1,11 @@
-import { useState } from "react";
 import "./App.css";
 import DesktopLayout from "./layouts/desktopLayout";
 import QuestionPage from "./Pages/QuestionPage/QuestionPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import { io } from "socket.io-client";
-const socket = io.connect("http://localhost:5000");
+import ControllerPage from "./Pages/ControllerPage/ControllerPage";
+const socket = io.connect(import.meta.env.VITE_SERVER_URI);
 
 function App() {
   return (
@@ -15,21 +15,20 @@ function App() {
           path="/"
           element={
             <DesktopLayout>
-              {" "}
               <Home socket={socket} />
             </DesktopLayout>
           }
         />
         <Route
-          path="/:qid"
+          path="/display/:id"
           element={
             <DesktopLayout>
               <QuestionPage />
             </DesktopLayout>
           }
         />
-        {/* <Route path="/controller/" element={<Dashboard />} />
-        <Route path="/controller/:qid" element={<NotFound />} /> */}
+        <Route path="/controller/:id" element={<ControllerPage />} />
+        {/* <Route path="/controller/:qid" element={<NotFound />} /> */}
       </Routes>
     </>
   );

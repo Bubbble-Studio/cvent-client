@@ -1,7 +1,7 @@
-import React from "react";
 import styles from "./ControllerLayout.module.css";
-const ControllerLayout = ({ children }) => {
-  return <div className={styles.controllerLayout}>{children}</div>;
-};
 
-export default ControllerLayout;
+function Controller(props) {
+  return <div className={styles.controller}>{props.children}</div>;
+}
+
+export default Controller;

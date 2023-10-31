@@ -12,6 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --max-width: 800px;
+  --clr-accent: #65d6d9;
+  --clr-btn: #00123d;
 }
 
 a {

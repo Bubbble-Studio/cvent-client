@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Home.module.css";
 import logo from "../../assets/images/cventlogo.svg";
+
 const Home = ({ socket }) => {
   React.useEffect(() => {
     socket.emit("join-room", "desktop");
@@ -8,6 +9,7 @@ const Home = ({ socket }) => {
   socket.on("user-connected", (data) => {
     console.log(data);
   });
+
   return (
     <div className={styles.container}>
       <div className={styles.box}>

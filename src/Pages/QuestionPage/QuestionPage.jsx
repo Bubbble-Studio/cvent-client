@@ -1,121 +1,47 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import styles from "./QuestionPage.module.css";
+import { DATA } from "../../utils/data";
+import Layout0 from "../../layouts/DisplayLayout/Layout0/Layout0";
+import Layout1 from "../../layouts/DisplayLayout/Layout1/Layout1";
+import Layout2 from "../../layouts/DisplayLayout/Layout2/Layout2";
+
 const QuestionPage = () => {
-  let { qid } = useParams();
-  let quesId = qid;
-  console.log(quesId);
-  let questions = [
-    {
-      id: 1,
-      question: "What is the capital of India?",
-      image:
-        "https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  let { id } = useParams();
 
-      video: "",
-      sideText: "",
-      options: [
-        {
-          id: 1,
-          option: "Delhi",
-          isCorrect: true,
-        },
-        {
-          id: 2,
-          option: "Mumbai",
-          isCorrect: false,
-        },
-        {
-          id: 3,
-          option: "Kolkata",
-          isCorrect: false,
-        },
-        {
-          id: 4,
-          option: "Chennai",
-          isCorrect: false,
-        },
-      ],
-    },
-    {
-      id: 2,
-      question: "What is the capital of India?",
-      image:
-        "https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  function getDisplayData() {
+    return DATA[id].display;
+  }
 
-      video: "",
-      sideText: "Here is side Text",
-      options: [
-        {
-          id: 1,
-          option: "Delhi",
-          isCorrect: true,
-        },
-        {
-          id: 2,
-          option: "Mumbai",
-          isCorrect: false,
-        },
-        {
-          id: 3,
-          option: "Kolkata",
-          isCorrect: false,
-        },
-        {
-          id: 4,
-          option: "Chennai",
-          isCorrect: false,
-        },
-      ],
-    },
-    {
-      id: 3,
-      question: "What is the capital of India?",
-      image: "",
+  function getLayoutComp(displayData) {
+    const { mediaLink, mediaType, description, sideDescription } = displayData;
+    switch (displayData.layoutType) {
+      case 0: {
+        return <Layout0 mediaLink={mediaLink} mediaType={mediaType} />;
+      }
+      case 1: {
+        return (
+          <Layout1
+            mediaLink={mediaLink}
+            mediaType={mediaType}
+            description={description}
+          />
+        );
+      }
+      case 2: {
+        return (
+          <Layout2
+            mediaLink={mediaLink}
+            mediaType={mediaType}
+            description={description}
+            sideDescription={sideDescription}
+          />
+        );
+      }
+    }
+  }
 
-      video: "../../assets/video/IMEX_BG.mp4",
-      sideText: "",
-      options: [
-        {
-          id: 1,
-          option: "Delhi",
-          isCorrect: true,
-        },
-        {
-          id: 2,
-          option: "Mumbai",
-          isCorrect: false,
-        },
-        {
-          id: 3,
-          option: "Kolkata",
-          isCorrect: false,
-        },
-        {
-          id: 4,
-          option: "Chennai",
-          isCorrect: false,
-        },
-      ],
-    },
-  ];
-  let question = questions.find((q) => q.id == quesId);
   return (
-    <div className={styles.container}>
-      <div
-        className={styles.mediaContainer}
-        style={{
-          justifyContent: question?.sideText != "" ? "space-between" : "center",
-        }}
-      >
-        {question?.image && <img src={question.image} alt="image" />}
-        {question?.sideText && (
-          <div className={styles.sideText}>{question.sideText}</div>
-        )}
-        {question?.video && <video src={question.video} autoplay />}
-      </div>
-      <div className={styles.text}>{question?.question}</div>
-    </div>
+    <div className={styles.container}>{getLayoutComp(getDisplayData())}</div>
   );
 };
 

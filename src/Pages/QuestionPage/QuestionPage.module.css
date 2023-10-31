@@ -6,6 +6,8 @@
   justify-content: space-around;
   align-items: center;
   gap: 2rem;
+  max-width: 90%;
+  margin: 0 auto;
 }
 .mediaContainer {
   width: 80%;

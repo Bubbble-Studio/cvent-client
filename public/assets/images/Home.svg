@@ -1,0 +1,10 @@
+<svg id="Home" xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 54 54">
+  <g id="Rectangle_6" data-name="Rectangle 6" fill="none" stroke="#65d6d9" stroke-width="4">
+    <rect width="54" height="54" rx="10" stroke="none"/>
+    <rect x="2" y="2" width="50" height="50" rx="8" fill="none"/>
+  </g>
+  <g id="Icon_feather-home" data-name="Icon feather-home" transform="translate(11.756 10.062)">
+    <path id="Path_56" data-name="Path 56" d="M4.5,14.838,19.721,3,34.942,14.838v18.6a3.382,3.382,0,0,1-3.382,3.382H7.882A3.382,3.382,0,0,1,4.5,33.442Z" transform="translate(-4.5 -3)" fill="none" stroke="#65d6d9" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <path id="Path_57" data-name="Path 57" d="M13.5,34.912V18H23.647V34.912" transform="translate(-3.353 -1.088)" fill="none" stroke="#65d6d9" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+</svg>

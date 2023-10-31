@@ -1,0 +1,15 @@
+.descContainer {
+  margin: 5% 0;
+  padding: 2rem;
+  border-radius: 2rem;
+  border: 5px solid white;
+}
+.mediaContainer {
+  background: white;
+  border-radius: 2rem;
+  padding: 1%;
+  min-height: 50vh;
+  margin: 0 auto;
+  margin-top: 3rem;
+  max-width: 70%;
+}
