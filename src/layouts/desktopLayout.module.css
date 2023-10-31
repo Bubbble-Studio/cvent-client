@@ -1,0 +1,14 @@
+.desktopLayout {
+  width: 100vw;
+  height: 100vh;
+}
+.desktopBG {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  background: url(../assets/images/bg.png) center no-repeat fixed;
+  background-size: cover;
+}
