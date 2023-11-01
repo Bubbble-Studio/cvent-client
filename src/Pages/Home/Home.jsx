@@ -9,7 +9,7 @@ const Home = () => {
     if (socket == null) return;
     socket.emit("join-room", "desktop");
   }, [socket]);
-
+  if (socket == null) return <div>loading</div>;
   socket.on("user-connected", (data) => {
     console.log(data);
   });

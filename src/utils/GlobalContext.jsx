@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import io from "socket.io-client";
+import { io } from "socket.io-client";
 
 const SocketContext = createContext();
 
@@ -11,9 +11,8 @@ export function SocketProvider({ children }) {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    const newSocket = io(import.meta.env.VITE_SERVER_URI, {
-      /* options */
-    });
+    console.log(import.meta.env.VITE_SERVER_URI);
+    const newSocket = io.connect(import.meta.env.VITE_SERVER_URI);
 
     setSocket(newSocket);
 
