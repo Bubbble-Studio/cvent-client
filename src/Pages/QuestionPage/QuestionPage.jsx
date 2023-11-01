@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./QuestionPage.module.css";
 import { DATA } from "../../utils/data";
 import Layout0 from "../../layouts/DisplayLayout/Layout0/Layout0";
@@ -6,37 +6,46 @@ import Layout1 from "../../layouts/DisplayLayout/Layout1/Layout1";
 import Layout2 from "../../layouts/DisplayLayout/Layout2/Layout2";
 import { useSocket } from "../../utils/GlobalContext";
 import { useEffect } from "react";
-import { SOCKET_EVENTS } from "../../utils/constants";
 
-const QuestionPage = () => {
+const DisplayPage = () => {
   let { id } = useParams();
-
-  const socket = useSocket();
+  const navigate = useNavigate();
+  const { peerConnection } = useSocket();
 
   useEffect(() => {
-    if (socket == null) return;
-    console.log("General");
-    socket.on(SOCKET_EVENTS.NAVIGATE_FORWARD, (data) => {
-      // Handle the event
-      console.log({ data });
-    });
+    console.log({ peerConnection });
+    if (!peerConnection || !peerConnection.dataChannel) return;
+
+    const dataChannel = peerConnection.dataChannel;
+
+    dataChannel.onmessage = (event) => {
+      console.log("Data received: ", event.data);
+      try {
+        const data = JSON.parse(event.data);
+        if (data.next) {
+          navigate(`/display/${data.next}`);
+        }
+      } catch (error) {
+        console.error("Error parsing data", error);
+      }
+    };
 
     return () => {
-      socket.off(SOCKET_EVENTS.NAVIGATE_FORWARD);
+      dataChannel.onmessage = null;
     };
-  }, [socket]);
+  }, [peerConnection, navigate]);
 
   function getDisplayData() {
-    return DATA[id].display;
+    return DATA[id]?.display;
   }
 
   function getLayoutComp(displayData) {
+    if (!displayData) return <div>Unknown layout type</div>;
     const { mediaLink, mediaType, description, sideDescription } = displayData;
     switch (displayData.layoutType) {
-      case 0: {
+      case 0:
         return <Layout0 mediaLink={mediaLink} mediaType={mediaType} />;
-      }
-      case 1: {
+      case 1:
         return (
           <Layout1
             mediaLink={mediaLink}
@@ -44,8 +53,7 @@ const QuestionPage = () => {
             description={description}
           />
         );
-      }
-      case 2: {
+      case 2:
         return (
           <Layout2
             mediaLink={mediaLink}
@@ -54,7 +62,8 @@ const QuestionPage = () => {
             sideDescription={sideDescription}
           />
         );
-      }
+      default:
+        return <div>Unknown layout type</div>;
     }
   }
 
@@ -63,4 +72,4 @@ const QuestionPage = () => {
   );
 };
 
-export default QuestionPage;
+export default DisplayPage;

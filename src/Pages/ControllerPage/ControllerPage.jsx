@@ -6,14 +6,12 @@ import { DATA } from "../../utils/data";
 import { useEffect, useState } from "react";
 import ButtonsGrid from "../../components/ButtonGrid";
 import { useSocket } from "../../utils/GlobalContext";
-import { SOCKET_EVENTS } from "../../utils/constants";
 
 function ControllerPage({ isConnected }) {
   const { id } = useParams();
   const [controllerData, setControllerData] = useState({});
-
   const navigate = useNavigate();
-  const socket = useSocket();
+  const { peerConnection, socket } = useSocket(); // Destructuring to get peerConnection and dataChannel
 
   useEffect(() => {
     if (id) {
@@ -22,14 +20,17 @@ function ControllerPage({ isConnected }) {
   }, [id]);
 
   function handleClickBtn(next) {
-    if (!isConnected) {
+    if (!socket.connected) {
       alert("Desktop not connected");
       return;
     }
     navigate(`/controller/${next}`);
-    // if (socket) {
-    socket.emit(SOCKET_EVENTS.NAVIGATE_FORWARD, next);
-    //  }
+    // Use WebRTC Data Channel to send the navigation command
+    if (peerConnection?.dataChannel?.readyState === "open") {
+      peerConnection.dataChannel.send(
+        JSON.stringify({ action: "navigate", to: next })
+      );
+    }
   }
 
   return (

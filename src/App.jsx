@@ -1,21 +1,22 @@
+import { useEffect, useState } from "react";
 import "./App.css";
-import DesktopLayout from "./layouts/desktopLayout";
+import DesktopLayout from "./layouts/DisplayLayout";
 import QuestionPage from "./Pages/QuestionPage/QuestionPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import ControllerPage from "./Pages/ControllerPage/ControllerPage";
-import { SocketProvider, useSocket } from "./utils/GlobalContext";
 import ControllerHome from "./Pages/ControllerHome/ControllerHome";
-import { useState } from "react";
+import { SocketProvider, useSocket } from "./utils/GlobalContext";
+
+function AppWrapper() {
+  return (
+    <SocketProvider>
+      <App />
+    </SocketProvider>
+  );
+}
 
 function App() {
-  let [isConnected, setIsConnected] = useState(false);
-  const socket = useSocket();
-  if (socket == null) return <div>loading</div>;
-  socket.on("is-desktop-connected", (data) => {
-    setIsConnected(data);
-    console.log(data);
-  });
   return (
     <Routes>
       <Route
@@ -34,17 +35,11 @@ function App() {
           </DesktopLayout>
         }
       />
-      <Route
-        path="/controller/"
-        element={<ControllerHome isConnected={isConnected} />}
-      />
-      <Route
-        path="/controller/:id"
-        element={<ControllerPage isConnected={isConnected} />}
-      />
+      <Route path="/controller" element={<ControllerHome />} />
+      <Route path="/controller/:id" element={<ControllerPage />} />
       {/* <Route path="/controller/:qid" element={<NotFound />} /> */}
     </Routes>
   );
 }
 
-export default App;
+export default AppWrapper;
