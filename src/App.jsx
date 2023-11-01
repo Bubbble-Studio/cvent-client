@@ -7,11 +7,14 @@ import Home from "./Pages/Home/Home";
 import ControllerPage from "./Pages/ControllerPage/ControllerPage";
 import ControllerHome from "./Pages/ControllerHome/ControllerHome";
 import { SocketProvider, useSocket } from "./utils/GlobalContext";
+import { WebRTCProvider } from "./utils/WebRTCContext";
 
 function AppWrapper() {
   return (
     <SocketProvider>
-      <App />
+      <WebRTCProvider>
+        <App />
+      </WebRTCProvider>
     </SocketProvider>
   );
 }

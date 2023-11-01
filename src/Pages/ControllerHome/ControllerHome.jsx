@@ -5,30 +5,45 @@ import styles from "./ControllerHome.module.css";
 import logo from "../../assets/images/cventlogo.svg";
 import { useSocket } from "../../utils/GlobalContext";
 import { useNavigate } from "react-router-dom";
+import { useWebRTC } from "../../utils/WebRTCContext";
 
 const ControllerHome = ({ isConnected }) => {
-  const { setupWebRTC, peerConnection, socket } = useSocket();
+  const socket = useSocket();
+  const { dataChannel, peerConnection, startConnection } = useWebRTC();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!socket?.emit) return;
+    // if (!peerConnection) {
+    startConnection();
+    // }
+  }, []);
 
-    // Signal to join the room
-    socket.emit("join-room", "controller");
+  const createAndSendOffer = async () => {
+    try {
+      const offer = await peerConnection.createOffer();
+      await peerConnection.setLocalDescription(offer);
 
-    // Setup WebRTC
-  }, [socket]);
-
+      // Send the offer through the signaling server
+      socket.emit("offer", offer);
+    } catch (error) {
+      console.error("Error creating an offer:", error);
+    }
+  };
   useEffect(() => {
-    if (!peerConnection && socket?.connected) {
-      console.log({ peerConnection, socket });
-      setupWebRTC("controller", socket);
-    }
-    if (socket?.connected) {
-      socket.on("webrtc-answer", (answer) => {
-        peerConnection?.setRemoteDescription(new RTCSessionDescription(answer));
-      });
-    }
+    if (!peerConnection) return;
+    if (!socket) return;
+    // Handle ICE candidate event
+    peerConnection.onicecandidate = (event) => {
+      if (event.candidate) {
+        socket.emit("ice-candidate", event.candidate);
+      }
+    };
+
+    // Function to initiate the offer creation process
+    // Call this function based on your application's logic, e.g., a button click
+    // const initiateConnection = () => {
+    createAndSendOffer();
+    // };
   }, [socket, peerConnection]);
 
   const clickHandler = () => {
@@ -38,10 +53,13 @@ const ControllerHome = ({ isConnected }) => {
 
     // Send message through the WebRTC data channel
     const data = JSON.stringify({ action: "navigate", next: 2 });
-    if (socket && peerConnection && peerConnection.dataChannel) {
-      peerConnection.dataChannel.send(data);
+    console.log({ dataChannel });
+    if (dataChannel && dataChannel.readyState === "open") {
+      dataChannel.send(data);
+      navigate("/controller/2");
+    } else {
+      console.error("Data channel is not ready");
     }
-    navigate("/controller/2");
     return;
   };
 
