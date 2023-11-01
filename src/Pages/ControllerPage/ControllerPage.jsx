@@ -8,7 +8,7 @@ import ButtonsGrid from "../../components/ButtonGrid";
 import { useSocket } from "../../utils/GlobalContext";
 import { SOCKET_EVENTS } from "../../utils/constants";
 
-function ControllerPage() {
+function ControllerPage({ isConnected }) {
   const { id } = useParams();
   const [controllerData, setControllerData] = useState({});
 
@@ -22,9 +22,13 @@ function ControllerPage() {
   }, [id]);
 
   function handleClickBtn(next) {
+    if (!isConnected) {
+      alert("Desktop not connected");
+      return;
+    }
     navigate(`/controller/${next}`);
     // if (socket) {
-    socket.emit(SOCKET_EVENTS.NAVIGATE_FORWARD, { next });
+    socket.emit(SOCKET_EVENTS.NAVIGATE_FORWARD, next);
     //  }
   }
 
