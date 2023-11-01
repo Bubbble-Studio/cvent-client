@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import DesktopLayout from "./layouts/DisplayLayout";
 import QuestionPage from "./Pages/QuestionPage/QuestionPage";
@@ -6,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import ControllerPage from "./Pages/ControllerPage/ControllerPage";
 import ControllerHome from "./Pages/ControllerHome/ControllerHome";
-import { SocketProvider, useSocket } from "./utils/GlobalContext";
+import { SocketProvider } from "./utils/GlobalContext";
 import { WebRTCProvider } from "./utils/WebRTCContext";
 
 function AppWrapper() {
