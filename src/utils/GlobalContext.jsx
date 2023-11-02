@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
 const SocketContext = createContext();
@@ -9,11 +9,7 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    // Connect to Socket.io server
-    const newSocket = io(import.meta.env.VITE_SERVER_URI, {
-      transports: ["websocket"],
-    });
-
+    const newSocket = io(import.meta.env.VITE_SERVER_URI); // Adjust your server URL/port here
     setSocket(newSocket);
 
     return () => newSocket.close();

@@ -1,69 +1,69 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Controller from "../../layouts/ControllerLayout";
 import styles from "./ControllerHome.module.css";
-
 import logo from "../../assets/images/cventlogo.svg";
 import { useSocket } from "../../utils/GlobalContext";
+import { usePeer } from "../../utils/PeerContext";
 import { useNavigate } from "react-router-dom";
-import { useWebRTC } from "../../utils/WebRTCContext";
 
-const ControllerHome = ({ isConnected }) => {
+const ControllerHome = () => {
   const socket = useSocket();
-  const { dataChannel, peerConnection, startConnection } = useWebRTC();
+  const { peer, dataChannel, setDataChannel, remoteId, setRemoteId } =
+    usePeer();
   const navigate = useNavigate();
 
+  // Setup peer connection
   useEffect(() => {
-    // if (!peerConnection) {
-    startConnection();
-    // }
-  }, []);
-
-  const createAndSendOffer = async () => {
-    try {
-      const offer = await peerConnection.createOffer();
-      await peerConnection.setLocalDescription(offer);
-
-      // Send the offer through the signaling server
-      socket.emit("offer", offer);
-    } catch (error) {
-      console.error("Error creating an offer:", error);
+    if (peer) {
+      peer.on("open", (id) => {
+        console.log(`Controller's Peer ID: ${id}`);
+        socket.emit("controller-peer-id", id);
+      });
     }
-  };
-  useEffect(() => {
-    if (!peerConnection) return;
-    if (!socket) return;
-    // Handle ICE candidate event
-    peerConnection.onicecandidate = (event) => {
-      if (event.candidate) {
-        socket.emit("ice-candidate", event.candidate);
-      }
-    };
+  }, [peer, socket]);
 
-    // Function to initiate the offer creation process
-    // Call this function based on your application's logic, e.g., a button click
-    // const initiateConnection = () => {
-    createAndSendOffer();
-    // };
-  }, [socket, peerConnection]);
+  // Handle connection to remote display
+  const connectToDisplay = (remotePeerId) => {
+    const connection = peer.connect(remotePeerId);
+
+    // Setup data channel events
+    connection.on("open", () => {
+      console.log("Connected to display");
+      setDataChannel(connection); // Update the dataChannel in context
+    });
+    connection.on("data", (data) => {
+      // Handle incoming data if needed
+      console.log("Received:", data);
+    });
+    connection.on("close", () => {
+      console.log("Disconnected from display");
+      setDataChannel(null);
+    });
+  };
+
+  useEffect(() => {
+    if (socket) {
+      socket.on("display-peer-id", (id) => {
+        setRemoteId(id);
+      });
+    }
+  }, [socket]);
+
+  useEffect(() => {
+    if (remoteId) {
+      connectToDisplay(remoteId);
+    }
+  }, [remoteId]);
 
   const clickHandler = () => {
-    if (!socket.connected) {
-      return alert("Desktop not connected");
+    if (dataChannel && dataChannel.open) {
+      dataChannel.send({
+        action: "navigate",
+        next: "2",
+      });
+      navigate(`/controller/2`);
     }
-
-    // Send message through the WebRTC data channel
-    const data = JSON.stringify({ action: "navigate", next: 2 });
-    console.log({ dataChannel });
-    if (dataChannel && dataChannel.readyState === "open") {
-      dataChannel.send(data);
-      navigate("/controller/2");
-    } else {
-      console.error("Data channel is not ready");
-    }
-    return;
   };
-
-  if (socket == null) return <div>Loading...</div>;
 
   return (
     <Controller>

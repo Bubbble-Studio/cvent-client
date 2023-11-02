@@ -6,14 +6,17 @@ import Home from "./Pages/Home/Home";
 import ControllerPage from "./Pages/ControllerPage/ControllerPage";
 import ControllerHome from "./Pages/ControllerHome/ControllerHome";
 import { SocketProvider } from "./utils/GlobalContext";
-import { WebRTCProvider } from "./utils/WebRTCContext";
+// import { WebRTCProvider } from "./utils/WebRTCContext";
+import { PeerProvider } from "./utils/PeerContext";
 
 function AppWrapper() {
   return (
     <SocketProvider>
-      <WebRTCProvider>
+      {/* <WebRTCProvider> */}
+      <PeerProvider>
         <App />
-      </WebRTCProvider>
+      </PeerProvider>
+      {/* </WebRTCProvider> */}
     </SocketProvider>
   );
 }

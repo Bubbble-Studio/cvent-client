@@ -3,64 +3,38 @@ import styles from "./Home.module.css";
 import logo from "../../assets/images/cventlogo.svg";
 import { useSocket } from "../../utils/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { useWebRTC } from "../../utils/WebRTCContext";
+import { usePeer } from "../../utils/PeerContext"; // Assuming you have a similar context for Display
 
 const Home = () => {
   const socket = useSocket();
-  const { dataChannel, peerConnection, startConnection } = useWebRTC();
   const navigate = useNavigate();
+  const { dataChannel, peer } = usePeer(); // Using PeerContext
 
   useEffect(() => {
-    if (!peerConnection) {
-      startConnection();
+    // if (!socket?.connected) return;
+    if (peer) {
+      peer.on("open", (id) => {
+        console.log(`Display's Peer ID: ${id}`);
+        socket.emit("display-peer-id", id);
+      });
     }
-  }, []);
+  }, [peer, socket]);
 
   useEffect(() => {
-    if (!peerConnection) return;
-    if (!socket) return;
-    // Listen for offers
-    socket.on("offer", async (offer) => {
-      try {
-        if (peerConnection.signalingState !== "stable") return;
-
-        await peerConnection.setRemoteDescription(
-          new RTCSessionDescription(offer)
-        );
-        const answer = await peerConnection.createAnswer();
-        await peerConnection.setLocalDescription(answer);
-
-        // Send the answer back through the signaling server
-        socket.emit("answer", answer);
-      } catch (error) {
-        console.error("Error responding to offer:", error);
-      }
-    });
-
-    // Listen for ICE candidates
-    socket.on("ice-candidate", (candidate) => {
-      peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
-    });
-  }, [peerConnection, socket]);
-
-  useEffect(() => {
+    console.log({ dataChannel });
     if (dataChannel) {
-      dataChannel.onmessage = (event) => {
-        const message = JSON.parse(event.data);
-        console.log({ message });
-        try {
-          const data = JSON.parse(event.data);
-          if (data.next) {
-            navigate(`/display/${data.next}`);
-          }
-        } catch (error) {
-          console.error("Error parsing data", error);
+      dataChannel.on("data", (data) => {
+        console.log("Received data:", data);
+        // Act on received data
+        if (data.action === "navigate") {
+          console.log({ data });
+          navigate(`/display/${data.next}`);
         }
-      };
+      });
     }
-  }, [dataChannel]);
+  }, [dataChannel, navigate]);
 
-  if (!socket) return <div>loading</div>; // Conditional rendering based on socket
+  if (!socket) return <div>Loading...</div>;
 
   return (
     <div className={styles.container}>

@@ -6,12 +6,13 @@ import { DATA } from "../../utils/data";
 import { useEffect, useState } from "react";
 import ButtonsGrid from "../../components/ButtonGrid";
 import { useSocket } from "../../utils/GlobalContext";
+import { usePeer } from "../../utils/PeerContext";
 
 function ControllerPage({ isConnected }) {
   const { id } = useParams();
   const [controllerData, setControllerData] = useState({});
   const navigate = useNavigate();
-  const { peerConnection, socket } = useSocket(); // Destructuring to get peerConnection and dataChannel
+  const { dataChannel } = usePeer();
 
   useEffect(() => {
     if (id) {
@@ -19,19 +20,15 @@ function ControllerPage({ isConnected }) {
     }
   }, [id]);
 
-  function handleClickBtn(next) {
-    if (!socket.connected) {
-      alert("Desktop not connected");
-      return;
+  const clickHandler = (next) => {
+    if (dataChannel && dataChannel.open) {
+      dataChannel.send({
+        action: "navigate",
+        next,
+      });
+      navigate(`/controller/${next}`);
     }
-    navigate(`/controller/${next}`);
-    // Use WebRTC Data Channel to send the navigation command
-    if (peerConnection?.dataChannel?.readyState === "open") {
-      peerConnection.dataChannel.send(
-        JSON.stringify({ action: "navigate", to: next })
-      );
-    }
-  }
+  };
 
   return (
     <ControllerLayout>
@@ -51,7 +48,7 @@ function ControllerPage({ isConnected }) {
             <div className={styles.buttons}>
               <ButtonsGrid
                 buttons={controllerData?.body?.buttons}
-                handleClickBtn={handleClickBtn}
+                handleClickBtn={clickHandler}
               />
             </div>
           </div>

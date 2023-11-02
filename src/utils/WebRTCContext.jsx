@@ -37,7 +37,7 @@ export const WebRTCProvider = ({ children }) => {
     setDataChannel(channel);
 
     pc.onicecandidate = (event) => {
-      if (event.candidate) {
+      if (event.candidate && socket?.connected) {
         socket.emit("ice-candidate", event.candidate);
       }
     };
@@ -49,7 +49,7 @@ export const WebRTCProvider = ({ children }) => {
     };
 
     pc.onicecandidate = (event) => {
-      if (event.candidate) {
+      if (event.candidate && socket?.connected) {
         socket.emit("signaling-data", { candidate: event.candidate });
       }
     };
