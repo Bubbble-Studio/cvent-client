@@ -1,0 +1,9 @@
+.button {
+  border-radius: 0.8rem;
+  border: 2px solid var(--clr-accent);
+  text-align: center;
+  padding: 2rem 4rem;
+  text-transform: capitalize;
+  background: var(--clr-btn);
+  font-weight: 600;
+}

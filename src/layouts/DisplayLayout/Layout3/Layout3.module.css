@@ -1,0 +1,61 @@
+.descContainer {
+  margin: 5% 0;
+  padding: 2rem;
+  border-radius: 2rem;
+  border: 5px solid white;
+}
+.mediaContainer {
+  background: white;
+  border-radius: 2rem;
+  padding: 1%;
+  height: 50vh;
+  margin: 0 auto;
+  margin-top: 3rem;
+  max-width: 70%;
+}
+.points {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.odds > div,
+.evens > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.odds > div > span,
+.evens > div > span {
+  display: block;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--clr-accent);
+  color: var(--clr-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.odds,
+.evens {
+  flex: 1;
+}
+
+.evens {
+  border-left: 2px dashed var(--clr-accent);
+  padding-left: 1rem;
+}
+
+.mediaContainer > img,
+.mediaContainer > video {
+  border-radius: 2rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

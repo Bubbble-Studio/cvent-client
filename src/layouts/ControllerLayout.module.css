@@ -1,0 +1,6 @@
+.controller {
+  background: url("/assets/images/controllerbg.png") center no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
