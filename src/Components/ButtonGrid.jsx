@@ -1,7 +1,7 @@
 import styles from "./Buttons.module.css";
 
 // eslint-disable-next-line react/prop-types
-function ButtonGrid({ buttons = [], handleClickBtn }) {
+const ButtonGrid = ({ buttons = [], handleClickBtn }) => {
   let columns;
 
   if (buttons.length === 2) {
@@ -37,6 +37,6 @@ function ButtonGrid({ buttons = [], handleClickBtn }) {
       ))}
     </div>
   );
-}
+};
 
 export default ButtonGrid;
