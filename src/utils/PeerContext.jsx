@@ -25,7 +25,7 @@ export const PeerProvider = ({ children }) => {
     if (import.meta.env.VITE_ENV === "dev") {
       config = {
         host: "localhost",
-        port: 9000,
+        port: 8000,
         path: "/peerjs",
         debug: 2,
       };

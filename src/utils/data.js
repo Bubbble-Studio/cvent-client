@@ -668,7 +668,7 @@ export const DATA = {
   },
   29: {
     controller: {
-      title: "Cvent Video Center",
+      title: "Events+",
       body: {
         description:
           "Scannen Sie den QR-Code und erfahren Sie mehr über Always On Engagement",
