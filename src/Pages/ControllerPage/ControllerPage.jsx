@@ -4,10 +4,10 @@ import headerImg2 from "../../assets/images/Home.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../../utils/data";
 import { useEffect, useState } from "react";
-import ButtonsGrid from "../../components/ButtonGrid";
 import { usePeer } from "../../utils/PeerContext";
+import ButtonGrid from "../../components/ButtonGrid";
 
-function ControllerPage({ isConnected }) {
+function ControllerPage() {
   const { id } = useParams();
   const [controllerData, setControllerData] = useState({});
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ function ControllerPage({ isConnected }) {
     navigate(`/controller`);
   }
 
-  function handleClickBack() {}
+  // function handleClickBack() {}
 
   return (
     <ControllerLayout>
@@ -90,7 +90,7 @@ function ControllerPage({ isConnected }) {
             )}
             <h3>{controllerData?.body?.description}</h3>
             <div className={styles.buttons}>
-              <ButtonsGrid
+              <ButtonGrid
                 buttons={controllerData?.body?.buttons}
                 handleClickBtn={clickHandler}
               />
