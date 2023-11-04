@@ -19,19 +19,6 @@ function ControllerPage() {
     }
   }, [id]);
 
-  useEffect(() => {
-    if (dataChannel && dataChannel.open) {
-      if (controllerData?.mediaLink) {
-        // stream the media based on controllerData.mediaType
-        // dataChannel.send({
-        //   action: "stream",
-        //   mediaLink: controllerData.mediaLink,
-        //   mediaType: controllerData.mediaType,
-        // });
-      }
-    }
-  }, [controllerData, dataChannel]);
-
   const clickHandler = (next) => {
     if (dataChannel && dataChannel.open) {
       dataChannel.send({
