@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../../utils/data";
 import { useEffect, useState } from "react";
 import ButtonsGrid from "../../components/ButtonGrid";
-import { useSocket } from "../../utils/GlobalContext";
 import { usePeer } from "../../utils/PeerContext";
 
 function ControllerPage({ isConnected }) {
@@ -24,11 +23,11 @@ function ControllerPage({ isConnected }) {
     if (dataChannel && dataChannel.open) {
       if (controllerData?.mediaLink) {
         // stream the media based on controllerData.mediaType
-        dataChannel.send({
-          action: "stream",
-          mediaLink: controllerData.mediaLink,
-          mediaType: controllerData.mediaType,
-        });
+        // dataChannel.send({
+        //   action: "stream",
+        //   mediaLink: controllerData.mediaLink,
+        //   mediaType: controllerData.mediaType,
+        // });
       }
     }
   }, [controllerData, dataChannel]);
@@ -50,7 +49,17 @@ function ControllerPage({ isConnected }) {
     url += "/assets/images/";
   }
   url += controllerData?.body?.mediaLink;
-  console.log(controllerData);
+
+  function handleClickHome() {
+    dataChannel.send({
+      action: "navigate",
+      next: 0,
+    });
+    navigate(`/controller`);
+  }
+
+  function handleClickBack() {}
+
   return (
     <ControllerLayout>
       <div className={styles.container}>
@@ -58,7 +67,12 @@ function ControllerPage({ isConnected }) {
           <div className={styles.title}>
             <h2>{controllerData.title}</h2>
           </div>
-          <img className={styles.homeImg} src={headerImg2} alt="header-img-2" />
+          <img
+            onClick={handleClickHome}
+            className={styles.homeImg}
+            src={headerImg2}
+            alt="header-img-2"
+          />
         </div>
         <section className={styles.centerContainer}>
           <div className={styles.boxHome}>
