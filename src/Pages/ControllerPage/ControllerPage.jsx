@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../../utils/data";
 import { useEffect, useState } from "react";
 import { usePeer } from "../../utils/PeerContext";
-import ButtonGrid from "../../components/ButtonGrid";
+import ButtonGrid from "../../comps/ButtonGrid";
 
 function ControllerPage() {
   const { id } = useParams();
