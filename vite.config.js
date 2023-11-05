@@ -18,7 +18,7 @@ export default defineConfig({
     manifest: {
       name: "CVENT",
       short_name: "CVENT",
-      description: "Description of your app",
+      description: "CVENT Kiosk",
       start_url: ".",
       display: "standalone",
       background_color: "#ffffff",

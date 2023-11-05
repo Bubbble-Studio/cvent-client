@@ -1,6 +1,7 @@
 import styles from "./Buttons.module.css";
 
-function ButtonsGrid({ buttons = [], handleClickBtn }) {
+// eslint-disable-next-line react/prop-types
+const ButtonGrid = ({ buttons = [], handleClickBtn }) => {
   let columns;
 
   if (buttons.length === 2) {
@@ -23,7 +24,7 @@ function ButtonsGrid({ buttons = [], handleClickBtn }) {
 
   return (
     <div style={gridStyle}>
-      {buttons.map((button, index) => (
+      {buttons.map((button) => (
         <button
           key={button.text}
           className={styles.button}
@@ -36,6 +37,6 @@ function ButtonsGrid({ buttons = [], handleClickBtn }) {
       ))}
     </div>
   );
-}
+};
 
-export default ButtonsGrid;
+export default ButtonGrid;

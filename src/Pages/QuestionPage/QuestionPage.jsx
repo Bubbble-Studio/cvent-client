@@ -1,11 +1,10 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./QuestionPage.module.css";
 import { DATA } from "../../utils/data";
 import Layout0 from "../../layouts/DisplayLayout/Layout0/Layout0";
 import Layout1 from "../../layouts/DisplayLayout/Layout1/Layout1";
 import Layout2 from "../../layouts/DisplayLayout/Layout2/Layout2";
-import { useSocket } from "../../utils/GlobalContext";
-import { useEffect, useState } from "react";
 import { usePeer } from "../../utils/PeerContext";
 import Layout3 from "../../layouts/DisplayLayout/Layout3/Layout3";
 
@@ -23,11 +22,12 @@ const DisplayPage = () => {
         // Act on received data
         if (data.action === "navigate") {
           console.log({ data });
+          if (data.next === 0) {
+            navigate(`/`);
+            return;
+          }
           navigate(`/display/${data.next}`);
         }
-        // if(data.action === 'stream'){
-
-        // }
       });
     }
   }, [dataChannel, navigate]);
