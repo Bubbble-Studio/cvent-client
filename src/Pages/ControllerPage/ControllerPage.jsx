@@ -31,7 +31,7 @@ function ControllerPage() {
   let url = window.location.origin;
   const mediaType = controllerData?.body?.mediaType;
   let mediaLink = controllerData?.body?.mediaLink;
-  mediaLink = mediaLink?.replace(" ", "_");
+  mediaLink = mediaLink?.replace(/_&_/g, "_")?.replace(/\s/g, "_");
   if (mediaType === "video") {
     url =
       "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/";
