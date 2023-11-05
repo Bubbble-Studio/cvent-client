@@ -2,8 +2,10 @@ import styles from "./Layout1.module.css";
 
 const Layout1 = ({ mediaType, mediaLink, description }) => {
   let url = window.location.origin;
+  mediaLink = mediaLink.replace(" ", "_");
   if (mediaType === "video") {
-    url += "/assets/video/";
+    url =
+      "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/";
   } else {
     url += "/assets/images/";
   }
