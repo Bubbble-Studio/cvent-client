@@ -30,12 +30,16 @@ function ControllerPage() {
   };
   let url = window.location.origin;
   const mediaType = controllerData?.body?.mediaType;
+  let mediaLink = controllerData?.body?.mediaLink;
+  mediaLink = mediaLink?.replace(" ", "_");
   if (mediaType === "video") {
-    url += "/assets/video/";
+    url =
+      "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/";
   } else {
-    url += "/assets/images/";
+    url =
+      "https://res.cloudinary.com/dmfizkn8b/image/upload/v1699200419/cvent/images/";
   }
-  url += controllerData?.body?.mediaLink;
+  url += mediaLink;
 
   function handleClickHome() {
     dataChannel.send({

@@ -89,7 +89,7 @@ export const DATA = {
         "Cvent's Lösungen für Hotels und Veranstaltungsorte helfen Ihnen mehr MICE & Transient Geschäfte zu gewinnen, konvertieren, verwalten sowie zu optimieren",
       layoutType: 1,
       mediaType: "image",
-      mediaLink: "",
+      mediaLink: "HC_Customer Value Wheel_German",
     },
   },
   5: {
@@ -339,7 +339,7 @@ export const DATA = {
         "Identifizieren und erreichen Sie die richtigen Eventplaner mit der Planner Navigator Lösung \nEntdecken Sie Ihre größten Chancen mit einem aussagekräftigen Überblick über die Beschaffungs- und RFP-Historie von Planern.",
       layoutType: 1,
       mediaType: "video",
-      mediaLink: "",
+      mediaLink: "Planner_Navigator-Overview-German_1_1",
     },
   },
   14: {
@@ -363,7 +363,7 @@ export const DATA = {
         "Präsentieren Sie Ihre Tagungs- und Veranstaltungsräume Tausenden von Eventplanern mit ansprechenden interaktiven Inhalten, betten Sie sie auf Ihrer Website ein, um Leads zu erfassen, und integrieren Sie sie in Ihr Cvent Supplier Network-Profil.",
       layoutType: 1,
       mediaType: "video",
-      mediaLink: "",
+      mediaLink: "Interactive_Floorplans_german_caps",
     },
   },
   15: {
@@ -387,7 +387,7 @@ export const DATA = {
         "Vermarkten, verkaufen und liefern Sie sicherere Veranstaltungen mit einer kollaborativen Eventmanagement-Software, die Rentabilität und Loyalität fördert. \nErwecken Sie Veranstaltungen zum Leben und vereinfachen Sie die Einrichtung für Ihr Personal mit präzisen Diagrammen, 3D-Renderings, Sitzplänen und einem optimierten Check-in",
       layoutType: 1,
       mediaType: "video",
-      mediaLink: "",
+      mediaLink: "Cvent_Event_Diagramming_-_german_caps",
     },
   },
   16: {
@@ -411,7 +411,8 @@ export const DATA = {
         "Identifizieren Sie Ihre größten Chancen mit leistungsstarken Echtzeitdaten und umsetzbaren, benutzerdefinierten Auswertungen. \nTreffen Sie bessere Entscheidungen, indem Sie schneller Trends erkennen. Sparen Sie mit unserer Lösung wertvolle Stunden, die Sie normalerweise damit verbringen würden, wichtige Erkenntnisse für Ihr Unternehmen zu sammeln.",
       layoutType: 1,
       mediaType: "video",
-      mediaLink: "",
+      mediaLink:
+        "Business_Intelligence_Actionable_Insights_-_Product_Demo_Video_40_sec__v1.0",
     },
   },
   17: {
@@ -508,8 +509,8 @@ export const DATA = {
       layoutType: 1,
       description:
         "Erreichen Sie mehr Eventplaner mit den MICE-Marketinglösungen von Cvent: dem Cvent Supplier Network.",
-      mediaLink: "",
-      mediaType: "image",
+      mediaLink: "CSN_Advertising_German_approved",
+      mediaType: "video",
     },
   },
   22: {
@@ -534,8 +535,8 @@ export const DATA = {
       layoutType: 1,
       description:
         "Gewinnen Sie einen Wettbewerbsvorteil mit Grundrissen und Diagrammen, die Planer von Ihren Räumlichkeiten überzeugen. \nSchließen Sie mehr Geschäfte ab, indem Sie mit vollständig maßgeschneiderten und realistischen Diagrammen zeigen, dass Ihr Veranstaltungsraum die Bedürfnisse Ihrer Kunden erfüllt. \nSparen Sie Stunden an unnötigen Vor-Ort-Besuchen, indem Sie Ihren Kunden einen virtuellen Rundgang von Ihren Räumlichkeiten anbieten.",
-      mediaLink: "",
-      mediaType: "image",
+      mediaLink: "GER_Photo-Realistic_3D_approved",
+      mediaType: "video",
     },
   },
   23: {
@@ -558,8 +559,8 @@ export const DATA = {
       layoutType: 1,
       description:
         "Steigern Sie Ihren Umsatz unabhängig Ihrer Mitarbeiterzahl mit der Teilnehmerbuchung. Verwalten Sie Raumblöcke und Onlinebuchungen auf einfache Weise. \nNutzen Sie hochmoderne Buchungsdashboards, um verwertbare Einblicke zu erhalten, sich mit CRS und PMS zu synchronisieren, benutzerdefinierte Buchungsseiten zu erstellen, Upselling zu automatisieren und die Treue der Planer zu fördern.",
-      mediaLink: "",
-      mediaType: "image",
+      mediaLink: "PASSKEY_GER_FINAL_Approved",
+      mediaType: "video",
     },
   },
   24: {
@@ -662,8 +663,8 @@ export const DATA = {
       layoutType: 1,
       description:
         "Die Beantwortung von RFPs ist zeitaufwändig, zudem sind die Kosten für die zahlreichen Verhandlungen zwischen Planern und Veranstaltungsorten hoch. \n Ermöglichen Sie es Planern simple Konferenzen direkt bei Ihrem Veranstaltungsort mit Cvent Instant Book zu buchen.",
-      mediaLink: "",
-      mediaType: "image",
+      mediaLink: "Instant_Book_GERMAN_approved",
+      mediaType: "video",
     },
   },
   29: {
@@ -739,8 +740,8 @@ export const DATA = {
       layoutType: 1,
       description:
         "Erfinden Sie Ihre RFP-Antworten mit Smart Custom Proposals neu. \n Entwerfen Sie einfach und schnell attraktive Angebote, die das Erlebnis vor Ort in Ihrer Immobilie widerspiegeln.",
-      mediaLink: "",
-      mediaType: "image",
+      mediaLink: "GER_Smart_Custom_Proposal_approved",
+      mediaType: "video",
     },
   },
   33: {
@@ -781,8 +782,8 @@ export const DATA = {
       layoutType: 1,
       description:
         "Die wichtigsten Leads ausfindig machen und Angebote in nur wenigen Minuten erstellen. \n Die Antwortautomatisierung von Cvent bewertet und priorisiert Ausschreibungen automatisch auf der Grundlage dessen, was für Ihren Veranstaltungsort am wichtigsten ist.",
-      mediaLink: "",
-      mediaType: "image",
+      mediaLink: "Response_Automation_-_Overview_Video_German_caps",
+      mediaType: "video",
     },
   },
 };

@@ -2,12 +2,13 @@ import styles from "./Layout1.module.css";
 
 const Layout1 = ({ mediaType, mediaLink, description }) => {
   let url = window.location.origin;
-  mediaLink = mediaLink.replace(" ", "_");
+  mediaLink = mediaLink?.replace(/_&_/g, "_")?.replace(/\s/g, "_");
   if (mediaType === "video") {
     url =
       "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/";
   } else {
-    url += "/assets/images/";
+    url =
+      "https://res.cloudinary.com/dmfizkn8b/image/upload/v1699200419/cvent/images/";
   }
   url += mediaLink;
   return (
