@@ -13,11 +13,13 @@ self.addEventListener("install", (event) => {
         "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Umfragen & Feedback.mp4",
         "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Venue Sourcing.mp4",
         "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Virtuelle Events.mp4",
-        "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Webinare.mp4",
+        // "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Webinare.mp4",
+        "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190101/cvent/video/Webinare.mp4",
       ];
       //make a regex of the url to replace space with _
-
-      videoResource = videoResource.map((url) => url.replace(/\s/g, "_"));
+      videoResource = videoResource
+        .map((url) => url.replace(/\s/g, "_"))
+        .map((url) => url.replace(/_&_/g, "_"));
       console.log(videoResource);
       return cache
         .addAll([
@@ -37,7 +39,7 @@ self.addEventListener("install", (event) => {
           // "/public/assets/video/Venue Sourcing.mp4",
           // "/public/assets/video/Virtuelle Events.mp4",
           // "/public/assets/video/Webinare.mp4",
-          [...videoResource],
+          ...videoResource,
           // Add other assets you want to cache
         ])
         .then((data) => {
