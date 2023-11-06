@@ -1,7 +1,5 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import WorkboxPlugin from "workbox-webpack-plugin";
-import CopyPlugin from "copy-webpack-plugin";
 
 export default defineConfig({
   plugins: [react()],
@@ -39,7 +37,7 @@ export default defineConfig({
   serviceWorker: {
     src: "src/sw.js",
     // Specify the destination of the service worker file
-    swDest: "dist/service-worker.js",
+    swDest: "dist/sw.js",
     // Configure the files to be precached
     globDirectory: "dist",
     globPatterns: ["**/*.{js,css,html,png,jpg}"],
