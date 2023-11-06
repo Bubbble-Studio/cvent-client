@@ -15,8 +15,11 @@ export const PeerProvider = ({ children }) => {
   useEffect(() => {
     console.log("USe effect running");
     // if (!socket?.connected) return;
+    function removeHttps(url) {
+      return url.replace(/https:\/\//, "");
+    }
     let config = {
-      host: import.meta.env.VITE_SERVER_URI,
+      host: removeHttps(import.meta.env.VITE_SERVER_URI),
       port: 443,
       path: "/peerjs",
       debug: 2,
