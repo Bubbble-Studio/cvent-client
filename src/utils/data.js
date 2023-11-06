@@ -329,7 +329,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -353,7 +353,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -377,7 +377,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -401,7 +401,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -500,7 +500,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -526,7 +526,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -550,7 +550,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -654,7 +654,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -731,7 +731,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
@@ -773,7 +773,7 @@ export const DATA = {
           },
           {
             text: "Zum Start",
-            next: 1,
+            next: 2,
           },
         ],
       },
