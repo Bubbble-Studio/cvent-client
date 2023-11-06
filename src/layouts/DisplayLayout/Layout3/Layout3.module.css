@@ -5,9 +5,9 @@
   border: 5px solid white;
 }
 .mediaContainer {
-  background: white;
+  /* background: white; */
   border-radius: 2rem;
-  padding: 1%;
+  /* padding: 1%; */
   height: 50vh;
   margin: 0 auto;
   margin-top: 3rem;

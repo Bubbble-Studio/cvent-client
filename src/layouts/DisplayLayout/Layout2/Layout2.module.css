@@ -5,12 +5,12 @@
   border: 5px solid white;
 }
 .mediaContainer {
-  background: white;
+  /* background: white; */
   border-radius: 1rem;
-  padding: 1%;
+  /* padding: 1%; */
   height: 40vh;
   margin: 0 auto;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   max-width: 70%;
 }
 .upperContainer {

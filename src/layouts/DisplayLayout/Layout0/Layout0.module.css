@@ -1,6 +1,10 @@
 .mediaContainer {
-  background: white;
+  /* background: white; */
   border-radius: 2rem;
-  padding: 1%;
+  /* padding: 1%; */
   min-height: 70vh;
+}
+
+section {
+  padding: 0 2%;
 }
