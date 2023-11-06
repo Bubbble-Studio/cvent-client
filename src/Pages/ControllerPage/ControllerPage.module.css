@@ -69,7 +69,8 @@
   width: 100%;
   gap: 10%;
   z-index: 10;
-  max-width: var(--max-width);
+  padding: 0 2rem;
+  /* max-width: var(--max-width); */
   margin-right: calc(calc(100% - calc(var(--max-width))) / 4);
 }
 
