@@ -21,8 +21,8 @@ export const DATA = {
       layoutType: 1,
       description:
         "Die Plattform von Cvent unterstützt alle Veranstaltungsformate und verbindet verschiedene Aspekte des Ökosystems, einschließlich der Suche nach Veranstaltungsorten und des Anbietermanagements. Mit mehr als 300.000 Hotels und Veranstaltungsorten im Supplier Network und mehr als 900 Einträgen im Vendor Marketplace ist die Plattform für jede Veranstaltungsgröße und -art skalierbar.",
-      mediaLink: "",
-      mediaType: "image",
+      mediaLink: "Cvent Intro.mp4",
+      mediaType: "video",
     },
   },
   3: {

@@ -2,6 +2,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open("my-cache").then((cache) => {
       let resources = [
+        "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699264459/cvent/video/Cvent Intro.mp4",
         "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Attendee Hub.mp4",
         "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Berichte & Analyse.mp4",
         "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/Check-in & Badging.mp4",
