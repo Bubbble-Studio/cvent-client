@@ -3,3 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+@media (prefers-color-scheme: dark) {
+  * {
+    color: white;
+  }
+}
+@media (prefers-color-scheme: light) {
+  * {
+    color: white;
+  }
+}
