@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: "./src/main.jsx",
+        main: "/index.html",
       },
     },
     output: {
