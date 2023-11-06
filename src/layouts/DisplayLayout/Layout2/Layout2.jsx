@@ -2,7 +2,7 @@ import styles from "./Layout2.module.css";
 
 const Layout2 = ({ mediaType, mediaLink, description, sideDescription }) => {
   let url = window.location.origin;
-  mediaLink = mediaLink?.replace(/_&_/g, "_")?.replace(/\s/g, "_");
+  mediaLink = mediaLink?.replace(/\s/g, "_")?.replace(/_&_/g, "_");
   if (mediaType === "video") {
     url =
       "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/";

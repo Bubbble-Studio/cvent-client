@@ -30,7 +30,8 @@ const Home = () => {
         // Act on received data
         if (data.action === "navigate") {
           console.log({ data });
-          navigate(`/display/${data.next}`);
+          if (data.next == -1) navigate(-1);
+          else navigate(`/display/${data.next}`);
         }
       });
     }

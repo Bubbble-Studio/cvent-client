@@ -19,7 +19,7 @@ const Layout3 = ({ mediaType, mediaLink, description, points = [] }) => {
     setEvens(evens);
   }, [points]);
   let url = window.location.origin;
-  mediaLink = mediaLink?.replace(/_&_/g, "_")?.replace(/\s/g, "_");
+  mediaLink = mediaLink?.replace(/\s/g, "_")?.replace(/_&_/g, "_");
   if (mediaType === "video") {
     url =
       "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/";
@@ -28,6 +28,7 @@ const Layout3 = ({ mediaType, mediaLink, description, points = [] }) => {
       "https://res.cloudinary.com/dmfizkn8b/image/upload/v1699200419/cvent/images/";
   }
   url += mediaLink;
+  console.log(mediaLink);
   return (
     <section>
       <div className={styles.mediaContainer}>

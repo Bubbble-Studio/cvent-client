@@ -12,7 +12,7 @@ const ButtonGrid = ({ buttons = [], handleClickBtn }) => {
     columns = "repeat(2, 1fr)";
   } else {
     // Default fallback for other cases
-    columns = "1fr";
+    columns = `repeat(2, 1fr)`;
   }
 
   const gridStyle = {

@@ -25,6 +25,10 @@ const DisplayPage = () => {
           if (data.next === 0) {
             navigate(`/`);
             return;
+          } else if (data.next === -1) {
+            console.log("navigate back");
+            navigate(-1);
+            return;
           }
           navigate(`/display/${data.next}`);
         }

@@ -1,5 +1,6 @@
 import styles from "./ControllerPage.module.css";
 import ControllerLayout from "../../layouts/ControllerLayout";
+import headerImg1 from "../../assets/images/Back.svg";
 import headerImg2 from "../../assets/images/Home.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../../utils/data";
@@ -31,7 +32,7 @@ function ControllerPage() {
   let url = window.location.origin;
   const mediaType = controllerData?.body?.mediaType;
   let mediaLink = controllerData?.body?.mediaLink;
-  mediaLink = mediaLink?.replace(/_&_/g, "_")?.replace(/\s/g, "_");
+  mediaLink = mediaLink?.replace(/\s/g, "_")?.replace(/_&_/g, "_");
   if (mediaType === "video") {
     url =
       "https://res.cloudinary.com/dmfizkn8b/video/upload/v1699190889/cvent/video/";
@@ -42,19 +43,31 @@ function ControllerPage() {
   url += mediaLink;
 
   function handleClickHome() {
-    dataChannel.send({
+    dataChannel?.send({
       action: "navigate",
       next: 0,
     });
     navigate(`/controller`);
   }
 
-  // function handleClickBack() {}
+  function handleClickBack() {
+    dataChannel?.send({
+      action: "navigate",
+      next: -1,
+    });
+    navigate(-1);
+  }
 
   return (
     <ControllerLayout>
       <div className={styles.container}>
         <div className={styles.header}>
+          <img
+            onClick={handleClickBack}
+            className={styles.homeImg}
+            src={headerImg1}
+            alt="header-img-2"
+          />
           <div className={styles.title}>
             <h2>{controllerData.title}</h2>
           </div>
