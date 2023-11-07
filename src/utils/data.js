@@ -200,7 +200,7 @@ export const DATA = {
             next: 27,
           },
           {
-            text: "Cvent Video Center",
+            text: "Events+",
             next: 29,
           },
         ],
