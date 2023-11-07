@@ -32,6 +32,7 @@ function ControllerPage() {
   let url = window.location.origin;
   const mediaType = controllerData?.body?.mediaType;
   let mediaLink = controllerData?.body?.mediaLink;
+  let back = DATA[id].back;
   mediaLink = mediaLink?.replace(/\s/g, "_")?.replace(/_&_/g, "_");
   if (mediaType === "video") {
     url =
@@ -51,23 +52,26 @@ function ControllerPage() {
   }
 
   function handleClickBack() {
+    console.log("back", back);
     dataChannel?.send({
       action: "navigate",
-      next: -1,
+      next: back,
     });
-    navigate(-1);
+    navigate(`/controller/${back}`);
   }
 
   return (
     <ControllerLayout>
       <div className={styles.container}>
         <div className={styles.header}>
-          <img
-            onClick={handleClickBack}
-            className={styles.homeImg}
-            src={headerImg1}
-            alt="header-img-2"
-          />
+          {back !== -1 && (
+            <img
+              onClick={handleClickBack}
+              className={styles.homeImg}
+              src={headerImg1}
+              alt="header-img-2"
+            />
+          )}
           <div className={styles.title}>
             <h2>{controllerData.title}</h2>
           </div>

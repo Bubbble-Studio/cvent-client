@@ -1,5 +1,6 @@
 export const DATA = {
   2: {
+    back: -1,
     controller: {
       title: "Willkommen Zur Cvent Tech Tour",
       body: {
@@ -26,6 +27,7 @@ export const DATA = {
     },
   },
   3: {
+    back: 2,
     controller: {
       title: "Hi Event-Profi",
       body: {
@@ -60,6 +62,7 @@ export const DATA = {
     },
   },
   4: {
+    back: 2,
     controller: {
       title: "Hi Hospitality-Profi",
       body: {
@@ -93,6 +96,7 @@ export const DATA = {
     },
   },
   5: {
+    back: 3,
     controller: {
       title: "Pre-Event: Planen und bewerben",
       body: {
@@ -125,6 +129,7 @@ export const DATA = {
     },
   },
   6: {
+    back: 3,
     controller: {
       title: "Während Ihres Events: Teilnehmermanagement",
       body: {
@@ -159,6 +164,7 @@ export const DATA = {
     },
   },
   7: {
+    back: 3,
     controller: {
       title: "Post-Event​ Kosten & Analyse",
       body: {
@@ -185,6 +191,7 @@ export const DATA = {
     },
   },
   8: {
+    back: 3,
     controller: {
       title: "Always On Engagement Digitale Touchpoints",
       body: {
@@ -215,6 +222,7 @@ export const DATA = {
     },
   },
   9: {
+    back: 4,
     controller: {
       title: "Gewinnen",
       body: {
@@ -235,10 +243,11 @@ export const DATA = {
     display: {
       layoutType: 0,
       mediaType: "image",
-      mediaLink: "",
+      mediaLink: "HC_Customer Value Wheel_German",
     },
   },
   10: {
+    back: 4,
     controller: {
       title: "Konvertieren",
       body: {
@@ -271,10 +280,11 @@ export const DATA = {
     display: {
       layoutType: 0,
       mediaType: "image",
-      mediaLink: "",
+      mediaLink: "HC_Customer Value Wheel_German",
     },
   },
   11: {
+    back: 4,
     controller: {
       title: "Verwalten",
       body: {
@@ -295,10 +305,11 @@ export const DATA = {
     display: {
       layoutType: 0,
       mediaType: "image",
-      mediaLink: "",
+      mediaLink: "HC_Customer Value Wheel_German",
     },
   },
   12: {
+    back: 4,
     controller: {
       title: "Optimieren",
       body: {
@@ -315,10 +326,11 @@ export const DATA = {
     display: {
       layoutType: 0,
       mediaType: "image",
-      mediaLink: "",
+      mediaLink: "HC_Customer Value Wheel_German",
     },
   },
   13: {
+    back: -1,
     controller: {
       title: "Interessierte finden",
       body: {
@@ -343,6 +355,7 @@ export const DATA = {
     },
   },
   14: {
+    back: -1,
     controller: {
       title: "Veranstaltungen präsentieren",
       body: {
@@ -367,6 +380,7 @@ export const DATA = {
     },
   },
   15: {
+    back: -1,
     controller: {
       title: "Veranstaltungen visualisieren",
       body: {
@@ -391,6 +405,7 @@ export const DATA = {
     },
   },
   16: {
+    back: -1,
     controller: {
       title: "Leistung messen",
       body: {
@@ -416,6 +431,7 @@ export const DATA = {
     },
   },
   17: {
+    back: 5,
     controller: {
       title: "Venue Sourcing",
       body: {
@@ -434,6 +450,7 @@ export const DATA = {
     },
   },
   18: {
+    back: 6,
     controller: {
       title: "Check-in & Badging",
       body: {
@@ -452,6 +469,7 @@ export const DATA = {
     },
   },
   19: {
+    back: 7,
     controller: {
       title: "Berichte & Analyse",
       body: {
@@ -470,6 +488,7 @@ export const DATA = {
     },
   },
   20: {
+    back: 8,
     controller: {
       title: "Webinare",
       body: {
@@ -488,6 +507,7 @@ export const DATA = {
     },
   },
   21: {
+    back: -1,
     controller: {
       title: "Werben",
       body: {
@@ -514,6 +534,7 @@ export const DATA = {
     },
   },
   22: {
+    back: -1,
     controller: {
       title: "Grundrisse individuell gestalten",
       body: {
@@ -540,6 +561,7 @@ export const DATA = {
     },
   },
   23: {
+    back: -1,
     controller: {
       title: "RFPs verwalten",
       body: {
@@ -564,6 +586,7 @@ export const DATA = {
     },
   },
   24: {
+    back: 5,
     controller: {
       title: "Event Marketing und Webseite",
       body: {
@@ -590,6 +613,7 @@ export const DATA = {
     },
   },
   25: {
+    back: 6,
     controller: {
       title: "Mobile Event Apps",
       body: {
@@ -608,6 +632,7 @@ export const DATA = {
     },
   },
   26: {
+    back: 7,
     controller: {
       title: "Umfragen & Bewertungen",
       body: {
@@ -626,6 +651,7 @@ export const DATA = {
     },
   },
   27: {
+    back: 8,
     controller: {
       title: "Virtuelle Events",
       body: {
@@ -644,6 +670,7 @@ export const DATA = {
     },
   },
   28: {
+    back: -1,
     controller: {
       title: "Sofortbuchungen erfassen",
       body: {
@@ -668,23 +695,26 @@ export const DATA = {
     },
   },
   29: {
+    back: 8,
     controller: {
       title: "Events+",
       body: {
         description:
           "Scannen Sie den QR-Code und erfahren Sie mehr über Always On Engagement",
-        media: "",
+        mediaType: "image",
+        mediaLink: "eventsplus.jpg",
       },
     },
     display: {
       layoutType: 1,
       description:
         "Jedes Event endet. \n Gute Eventinhalte müssen das nicht. \n Bei Events entstehen viele Videos. Halten Sie Ihr Publikum auch nach der Veranstaltung mit On-Demand-Zugriff auf Ihre besten Videoinhalte informiert und inspirieren Sie es.",
-      mediaLink: "",
+      mediaLink: "HC_Customer Value Wheel_German",
       mediaType: "image",
     },
   },
   30: {
+    back: 5,
     controller: {
       title: "Event Registrierung",
       body: {
@@ -703,6 +733,7 @@ export const DATA = {
     },
   },
   31: {
+    back: 6,
     controller: {
       title: "Attendee Hub",
       body: {
@@ -721,6 +752,7 @@ export const DATA = {
     },
   },
   32: {
+    back: -1,
     controller: {
       title: "Individuelle Angebote erstellen",
       body: {
@@ -745,6 +777,7 @@ export const DATA = {
     },
   },
   33: {
+    back: 6,
     controller: {
       title: "Cvent Lead Capture",
       body: {
@@ -763,6 +796,7 @@ export const DATA = {
     },
   },
   34: {
+    back: -1,
     controller: {
       title: "RFPs verwalten",
       body: {
