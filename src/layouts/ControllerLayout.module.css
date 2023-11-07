@@ -1,6 +1,17 @@
 .controller {
-  background: url("/assets/images/controllerbg.png") center no-repeat;
+  /* background: url(/assets/video/IMEX_BG.mp4) center no-repeat; */
   background-size: cover;
   height: 100vh;
   width: 100vw;
+}
+.BGvideo {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
