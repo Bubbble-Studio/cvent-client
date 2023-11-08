@@ -22,7 +22,7 @@ const DisplayPage = () => {
         // Act on received data
         if (data.action === "navigate") {
           console.log({ data });
-          if (data.next === 0) {
+          if (data.next === "home") {
             navigate(`/`);
             return;
           } else if (data.next === -1) {

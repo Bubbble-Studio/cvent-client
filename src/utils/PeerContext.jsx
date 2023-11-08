@@ -8,6 +8,7 @@ export const usePeer = () => useContext(PeerContext);
 
 export const PeerProvider = ({ children }) => {
   const [peer, setPeer] = useState(null);
+  const [modalOpen, setModalOpen] = useState(true);
   const [dataChannel, setDataChannel] = useState(null); // Data channel state
   const [remoteId, setRemoteId] = useState(""); // Remote peer ID [controller
   const socket = useSocket();
@@ -81,6 +82,8 @@ export const PeerProvider = ({ children }) => {
     setDataChannel, // Providing a way to set the data channel
     remoteId,
     setRemoteId,
+    modalOpen,
+    setModalOpen,
   };
 
   return (

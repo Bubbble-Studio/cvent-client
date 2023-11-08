@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./Home.module.css";
 import logo from "../../assets/images/cventlogo.svg";
 import { useSocket } from "../../utils/GlobalContext";
@@ -9,8 +9,7 @@ import UseAs from "../../comps/UseAs";
 const Home = () => {
   const socket = useSocket();
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(true);
-  const { dataChannel, peer } = usePeer(); // Using PeerContext
+  const { dataChannel, peer, modalOpen, setModalOpen } = usePeer(); // Using PeerContext
 
   useEffect(() => {
     // if (!socket?.connected) return;
