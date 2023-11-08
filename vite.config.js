@@ -43,6 +43,8 @@ let resources = [
   "https://res.cloudinary.com/dmfizkn8b/image/upload/v1699200419/cvent/images/During Your Event Attendee Engagement Home Screen.jpg",
   "https://res.cloudinary.com/dmfizkn8b/image/upload/v1699200419/cvent/images/Post-Event Spend & Analysis Home Screen.jpg",
   "https://res.cloudinary.com/dmfizkn8b/image/upload/v1699200419/cvent/images/Always on Engagement Digital Touchpoints Home Screen.jpg",
+
+  "https://res.cloudinary.com/dmfizkn8b/image/upload/v1699200419/cvent/images/Pre-Event_Plan_and_Promote_Home_Screen.png",
 ];
 
 export default defineConfig({
@@ -98,6 +100,9 @@ export default defineConfig({
               expiration: {
                 maxEntries: 100,
                 maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+              },
+              cacheableResponse: {
+                statuses: [200],
               },
             },
           },
