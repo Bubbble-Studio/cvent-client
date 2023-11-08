@@ -49,7 +49,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
+      registerType: "prompt",
       includeAssets: [
         // "favicon.ico",
         // "robots.txt",
@@ -81,6 +81,9 @@ export default defineConfig({
           },
           // Include other sizes as needed
         ],
+        display_override: ["standalone"],
+        scope: "/",
+        orientation: "landscape",
       },
     }),
   ],
@@ -92,23 +95,6 @@ export default defineConfig({
     },
     output: {
       publicPath: "/",
-    },
-    // PWA-related settings
-    manifest: {
-      name: "CVENT",
-      short_name: "CVENT",
-      description: "CVENT Kiosk",
-      start_url: ".",
-      display: "standalone",
-      background_color: "#ffffff",
-      theme_color: "#000000",
-      icons: [
-        {
-          src: "cventlogo.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-      ],
     },
   },
   server: {
