@@ -63,9 +63,9 @@ export default defineConfig({
         "/assets/images/controllerbg.png",
         "/assets/images/controllerbg1.png",
         "/assets/images/cventlogo.svg",
-        // ...Array.from(new Set(resources))
-        //   .map((url) => url.replace(/\s/g, "_"))
-        //   .map((url) => url.replace(/_&_/g, "_")),
+        ...Array.from(new Set(resources))
+          .map((url) => url.replace(/\s/g, "_"))
+          .map((url) => url.replace(/_&_/g, "_")),
       ], // make sure to list all static assets you want to cache
       manifest: {
         name: "CVENT",
@@ -94,7 +94,7 @@ export default defineConfig({
             urlPattern: new RegExp(
               "^https://res.cloudinary.com/dmfizkn8b/(.*)"
             ),
-            handler: "CacheFirst",
+            handler: "NetworkFirst",
             options: {
               cacheName: "cloudinary-assets",
               expiration: {
@@ -103,6 +103,9 @@ export default defineConfig({
               },
               cacheableResponse: {
                 statuses: [200],
+              },
+              rangeRequests: {
+                statuses: [206, 416],
               },
             },
           },
