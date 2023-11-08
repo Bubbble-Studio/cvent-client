@@ -1,8 +1,37 @@
 import { defineConfig } from "vite";
+import { VitePWA } from "vite-plugin-pwa";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: [
+        "favicon.ico",
+        "robots.txt",
+        "apple-touch-icon.png",
+        "cventlogo.png",
+      ], // make sure to list all static assets you want to cache
+      manifest: {
+        name: "CVENT",
+        short_name: "CVENT",
+        description: "CVENT Kiosk",
+        start_url: ".",
+        display: "standalone",
+        background_color: "#ffffff",
+        theme_color: "#000000",
+        icons: [
+          {
+            src: "cventlogo.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          // Include other sizes as needed
+        ],
+      },
+    }),
+  ],
   build: {
     rollupOptions: {
       input: {
