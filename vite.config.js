@@ -63,9 +63,9 @@ export default defineConfig({
         "/assets/images/controllerbg.png",
         "/assets/images/controllerbg1.png",
         "/assets/images/cventlogo.svg",
-        ...Array.from(new Set(resources))
-          .map((url) => url.replace(/\s/g, "_"))
-          .map((url) => url.replace(/_&_/g, "_")),
+        // ...Array.from(new Set(resources))
+        //   .map((url) => url.replace(/\s/g, "_"))
+        //   .map((url) => url.replace(/_&_/g, "_")),
       ], // make sure to list all static assets you want to cache
       manifest: {
         name: "CVENT",
