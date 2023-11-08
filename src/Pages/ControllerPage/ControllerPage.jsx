@@ -46,7 +46,7 @@ function ControllerPage() {
   function handleClickHome() {
     dataChannel?.send({
       action: "navigate",
-      next: 0,
+      next: "home",
     });
     navigate(`/controller`);
   }
