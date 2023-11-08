@@ -85,6 +85,24 @@ export default defineConfig({
         scope: "/",
         orientation: "landscape",
       },
+      workbox: {
+        runtimeCaching: [
+          // use regex for cloudinary asset files
+          {
+            urlPattern: new RegExp(
+              "^https://res.cloudinary.com/dmfizkn8b/(.*)"
+            ),
+            handler: "CacheFirst",
+            options: {
+              cacheName: "cloudinary-assets",
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+              },
+            },
+          },
+        ],
+      },
     }),
   ],
   build: {
